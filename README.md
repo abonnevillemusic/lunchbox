@@ -1,4 +1,6 @@
-# LBX-500 & Vintage 500-Series Virtual Analog Suite
+# lunchbox
+## LBX-500 & Vintage 500-Series Virtual Analog Suite
+___
 
 **C++20 / JUCE 8** circuit-modeled audio plugins (**VST3**, **macOS Audio Unit**, and **Standalone**) built around a native **6-Slot VPR 500-Series Lunchbox Container (`LBX-500`)** with a sample-accurate **electrical and magnetic backplane**.
 
