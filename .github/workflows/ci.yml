@@ -1,0 +1,25 @@
+name: Build & Circuit Verification CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  macos-build-and-verify:
+    name: macOS Release Build + CTest Circuit Suite
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure CMake (fetches JUCE 8.0.4)
+        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build VST3, AU, Standalone & Verification Suites
+        run: cmake --build build --config Release --parallel
+
+      - name: Run Circuit & LBX-500 Backplane Verification Tests
+        run: ctest --test-dir build --output-on-failure -V
